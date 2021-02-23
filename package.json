@@ -1,0 +1,14 @@
+{
+  "name": "Giveaway-Bot",
+  "version": "1.0.0",
+  "description": "Giveaway Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "discord-giveaways": "^4.4.2",
+    "discord.js": "^12.5.1",
+    "ms": "^2.1.2"
+  }
+}
