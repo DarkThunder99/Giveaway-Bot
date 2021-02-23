@@ -6,7 +6,6 @@ const client = new Discord.Client();
 const config = require('./config.json');
 client.config = config;
 
-// Init discord giveaways
 const { GiveawaysManager } = require('discord-giveaways');
 client.giveawaysManager = new GiveawaysManager(client, {
     storage: "./giveaways.json",
@@ -17,7 +16,6 @@ client.giveawaysManager = new GiveawaysManager(client, {
         reaction: "🎉"
     }
 });
-// We now have a client.giveawaysManager property to manage our giveaways!
 
 client.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
     console.log(`${member.user.tag} entered giveaway #${giveaway.messageID} (${reaction.emoji.name})`);
@@ -31,7 +29,6 @@ client.giveawaysManager.on("giveawayEnded", (giveaway, winners) => {
     console.log(`Giveaway #${giveaway.messageID} ended! Winners: ${winners.map((member) => member.user.username).join(', ')}`);
 });
 
-/* Load all events */
 fs.readdir("./events/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
@@ -45,7 +42,6 @@ fs.readdir("./events/", (_err, files) => {
 
 client.commands = new Discord.Collection();
 
-/* Load all commands */
 fs.readdir("./commands/", (_err, files) => {
     files.forEach((file) => {
         if (!file.endsWith(".js")) return;
@@ -56,5 +52,4 @@ fs.readdir("./commands/", (_err, files) => {
     });
 });
 
-// Login
 client.login(config.token);
